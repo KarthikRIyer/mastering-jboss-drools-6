@@ -4,11 +4,10 @@ import com.example.droolstut.model.Item.Category;
 
 rule "Classify Item - Low Range"
     when
-        $i: Item(cost < 200)
+        $i: Item(cost < 200, category == Category.NA)
     then
         $i.setCategory(Category.LOW_RANGE);
-//        System.out.println("Hello");
-//        update($i);
+        update($i);
 end
 
 rule "Classify Item - Mid Range"
@@ -16,7 +15,7 @@ rule "Classify Item - Mid Range"
         $i: Item(cost > 200 && cost < 500, category == Category.NA)
     then
         $i.setCategory(Category.MID_RANGE);
-//        update($i);
+        update($i);
 end
 
 rule "Classify Item - High Range"
@@ -24,5 +23,5 @@ rule "Classify Item - High Range"
         $i: Item(cost >= 500, category == Category.NA)
     then
         $i.setCategory(Category.HIGH_RANGE);
-//        update($i);
+        update($i);
 end
