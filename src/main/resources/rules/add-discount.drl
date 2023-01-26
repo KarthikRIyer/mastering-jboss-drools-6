@@ -1,0 +1,21 @@
+package rules
+import com.example.droolstut.model.Order;
+import com.example.droolstut.model.Customer;
+import com.example.droolstut.model.Coupon;
+import com.example.droolstut.model.OrderLine;
+import com.example.droolstut.model.Item;
+import com.example.droolstut.model.Discount;
+
+rule "High Range order - 10% discount"
+    when
+        $o: Order($lines: orderLines, orderLines.size >= 2, discount == null)
+        forall(
+            OrderLine(this memberOf $lines, $item: item)
+            Item(this == $item, category == Item.Category.HIGH_RANGE)
+        )
+    then
+        modify($o){
+            setDiscount(new Discount(10.0))
+        }
+end
+
