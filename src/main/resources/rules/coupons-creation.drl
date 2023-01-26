@@ -1,0 +1,13 @@
+package rules
+import com.example.droolstut.model.Order;
+import com.example.droolstut.model.Customer;
+import com.example.droolstut.model.Coupon;
+
+rule "Create Coupons for silver customer"
+    when
+        $o: Order($customer: customer)
+        $c: Customer(this == $customer, category == Customer.Category.SILVER)
+    then
+        insert(new Coupon($c, $o, Coupon.CouponType.POINTS));
+end
+

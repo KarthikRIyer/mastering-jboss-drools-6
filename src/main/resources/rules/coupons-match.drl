@@ -1,0 +1,15 @@
+package rules
+import com.example.droolstut.model.Order;
+import com.example.droolstut.model.Customer;
+import com.example.droolstut.model.Coupon
+import org.slf4j.LoggerFactory
+import org.slf4j.Logger;
+
+rule "Match coupons: POINTS"
+    when
+        $coupon: Coupon(type == Coupon.CouponType.POINTS)
+    then
+        Logger logger = LoggerFactory.getLogger("CouponMatcher Rule");
+        logger.info("New coupon: {}", $coupon.toString());
+end
+
