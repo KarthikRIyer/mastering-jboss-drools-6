@@ -40,6 +40,10 @@ public class Order implements Serializable {
                 .sum();
     }
 
+    public void setItems(List<OrderLine> orderLines) {
+        this.orderLines = orderLines;
+    }
+
     public void increaseDiscount(double increase) {
         if (discount == null) {
             discount = new Discount(0.0);

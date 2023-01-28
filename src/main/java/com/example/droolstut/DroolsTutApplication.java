@@ -1,7 +1,6 @@
 package com.example.droolstut;
 
-import org.kie.api.KieServices;
-import org.kie.api.runtime.KieContainer;
+import com.example.droolstut.util.Util;
 import org.kie.api.runtime.KieSession;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -16,10 +15,7 @@ public class DroolsTutApplication {
 
 	@Bean
 	public KieSession kieSession() {
-		KieServices kieServices = KieServices.Factory.get();
-		KieContainer kieContainer = kieServices.getKieClasspathContainer();
-		KieSession kieSession = kieContainer.newKieSession();
-		return kieSession;
+		return Util.getDefaultKieSession();
 	}
 
 }
