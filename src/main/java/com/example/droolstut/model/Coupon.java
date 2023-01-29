@@ -10,7 +10,7 @@ import java.util.Date;
 @Getter
 @Setter
 @EqualsAndHashCode
-@ToString
+//@ToString
 public class Coupon {
 
     public enum CouponType {

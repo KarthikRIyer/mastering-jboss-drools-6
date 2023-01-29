@@ -8,6 +8,8 @@ rule "Create Coupons for silver customer"
         $o: Order($customer: customer)
         $c: Customer(this == $customer, category == Customer.Category.SILVER)
     then
-        insert(new Coupon($c, $o, Coupon.CouponType.POINTS));
+        Coupon x = new Coupon($c, $o, Coupon.CouponType.POINTS);
+        System.out.println(x);
+        insert(x);
 end
 
